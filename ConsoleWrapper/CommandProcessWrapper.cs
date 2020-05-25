@@ -95,7 +95,8 @@ namespace ConsoleWrapper
 
         public void Send(string text)
         {
-            _process.StandardInput?.WriteLineAsync(text);
+            _process.StandardInput?.WriteLine(text);
+            _process.StandardInput?.Flush();
         }
     }
 }
