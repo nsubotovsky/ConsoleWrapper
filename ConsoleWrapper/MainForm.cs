@@ -13,6 +13,7 @@ namespace ConsoleWrapper
     public partial class MainForm : Form
     {
         private CommandProcessWrapper _commandProcessWrapper=null;
+        private const string EndedProcessMessage = "<PROCESS ENDED>";
 
         public MainForm()
         {
@@ -29,11 +30,25 @@ namespace ConsoleWrapper
         {
             _commandProcessWrapper = new CommandProcessWrapper(@"C:\programData\Anaconda3\python.exe", @"C:\Users\Luxor\PycharmProjects\dm_textmining\testRead.py");
 
-            _commandProcessWrapper.NewLine += addNewLine;
+            _commandProcessWrapper.NewLine += AddNewLine;
+            _commandProcessWrapper.ProcessEnded += ProcessEnded;
             _commandProcessWrapper.Start();
         }
 
-        private void addNewLine(object sender, string e)
+        private void ProcessEnded(object sender, EventArgs e)
+        {
+            DisableInputBox();
+            AddLine(EndedProcessMessage);
+        }
+
+        private void DisableInputBox()
+        {
+            if (InputBox.InvokeRequired) InputBox.Invoke((Action)DisableInputBox);
+            InputBox.Text = EndedProcessMessage;
+            InputBox.Enabled = false;
+        }
+
+        private void AddNewLine(object sender, string e)
         {
             AddLine(e);
         }
