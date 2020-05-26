@@ -30,8 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.OutputBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.InputBox = new System.Windows.Forms.TextBox();
+            this.Shortcuts = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // OutputBox
@@ -47,19 +49,8 @@
             this.OutputBox.Name = "OutputBox";
             this.OutputBox.ReadOnly = true;
             this.OutputBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.OutputBox.Size = new System.Drawing.Size(780, 398);
+            this.OutputBox.Size = new System.Drawing.Size(652, 463);
             this.OutputBox.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(798, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // InputBox
             // 
@@ -70,22 +61,45 @@
             this.InputBox.ForeColor = System.Drawing.Color.Lime;
             this.InputBox.Location = new System.Drawing.Point(12, 12);
             this.InputBox.Name = "InputBox";
-            this.InputBox.Size = new System.Drawing.Size(780, 22);
+            this.InputBox.Size = new System.Drawing.Size(652, 22);
             this.InputBox.TabIndex = 2;
-            this.InputBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.InputBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputBox_KeyDown);
+            // 
+            // Shortcuts
+            // 
+            this.Shortcuts.AutoSize = true;
+            this.Shortcuts.Location = new System.Drawing.Point(6, 16);
+            this.Shortcuts.Name = "Shortcuts";
+            this.Shortcuts.Size = new System.Drawing.Size(50, 13);
+            this.Shortcuts.TabIndex = 3;
+            this.Shortcuts.Text = "<NONE>";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.Shortcuts);
+            this.groupBox1.Location = new System.Drawing.Point(670, 40);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(141, 463);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Shortcuts";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 450);
+            this.ClientSize = new System.Drawing.Size(823, 515);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.InputBox);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.OutputBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Console";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,8 +108,9 @@
         #endregion
 
         private System.Windows.Forms.TextBox OutputBox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox InputBox;
+        private System.Windows.Forms.Label Shortcuts;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
